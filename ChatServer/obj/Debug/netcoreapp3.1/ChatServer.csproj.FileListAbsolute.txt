@@ -1,0 +1,16 @@
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.exe
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.deps.json
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.runtimeconfig.json
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.runtimeconfig.dev.json
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.dll
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatServer.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatProtocol.dll
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\ChatProtocol.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.csprojAssemblyReference.cache
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.AssemblyInfoInputs.cache
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.AssemblyInfo.cs
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.csproj.CoreCompileInputs.cache
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.csproj.CopyComplete
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.dll
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatServer\obj\Debug\netcoreapp3.1\ChatServer.genruntimeconfig.cache

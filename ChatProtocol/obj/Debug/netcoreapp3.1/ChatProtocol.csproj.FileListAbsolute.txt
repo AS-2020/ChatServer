@@ -1,0 +1,9 @@
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\bin\Debug\netcoreapp3.1\ChatProtocol.deps.json
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\bin\Debug\netcoreapp3.1\ChatProtocol.dll
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\bin\Debug\netcoreapp3.1\ChatProtocol.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.AssemblyInfoInputs.cache
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.AssemblyInfo.cs
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.csproj.CoreCompileInputs.cache
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.dll
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.csprojAssemblyReference.cache
