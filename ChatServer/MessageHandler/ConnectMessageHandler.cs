@@ -32,15 +32,7 @@ namespace ChatServer.MessageHandler
                 server.Zaehler++;
                 connectResponseMessage.Zaehler = server.Zaehler;
                 Console.WriteLine("Client connected.");
-                ConnectNotification connectNotification = new ConnectNotification();
-                server.benutzer[0].ClientName = "Nicht Peter";
-                connectNotification.Name = server.benutzer[0].ClientName; // falscher name bis jetzt
-                string json_connect = JsonSerializer.Serialize(connectNotification);
-                byte[] msg_connect = System.Text.Encoding.UTF8.GetBytes(json_connect);
-                foreach (TcpClient remoteClient in server.GetClients())
-                {
-                    remoteClient.GetStream().Write(msg_connect, 0, msg_connect.Length);
-                }
+                
             }
 
             //ConnectResponseMessage connectResponseMessage = new ConnectResponseMessage();

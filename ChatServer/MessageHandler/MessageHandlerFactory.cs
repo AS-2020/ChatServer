@@ -10,6 +10,8 @@
                     return new ChatMessageHandler();
                 case 2:
                     return new ConnectMessageHandler();
+                case 5:
+                    return new NotificationMessageHandler();
             }
 
             return null;
