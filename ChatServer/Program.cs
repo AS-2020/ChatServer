@@ -43,7 +43,6 @@ namespace ChatServer
             {
                 server.SetPassword("test123");
                 server.Start();
-                server.LoadClients();
 
                 while (true)
                 {

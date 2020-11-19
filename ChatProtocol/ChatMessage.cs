@@ -3,6 +3,7 @@
     public class ChatMessage : IMessage
     {
         public string Content { get; set; }
+        public string SessionId { get; set; }
 
         public int MessageId
         {

@@ -10,32 +10,27 @@ namespace ChatServer.MessageHandler
         public void Execute(Server server, TcpClient client, IMessage message)
         {
             ConnectMessage connectMessage = message as ConnectMessage;
-            ConnectResponseMessage connectResponseMessage = new ConnectResponseMessage();
 
-
-            // @TODO Benutzer authentifizieren
-            bool existent = false;
-            if (server.ClientExists(connectMessage.ClientName, connectMessage.ClientPassword))
-            {
-                existent = true;
-            }
-
-            bool authenticated = true;
+            bool authenticatedServerPassword = true;
             if (server.HasPassword())
             {
-                authenticated = server.CheckPassword(connectMessage.ServerPassword);
+                authenticatedServerPassword = server.CheckPassword(connectMessage.ServerPassword);
             }
 
-            if (authenticated && existent)
+            User user = server.GetUsers().Find(u => u.Username == connectMessage.Username && u.Password == connectMessage.Password);
+            bool authenticatedUser = (user != null);
+
+            bool authenticated = authenticatedServerPassword && authenticatedUser;
+            ConnectResponseMessage connectResponseMessage = new ConnectResponseMessage();
+
+            if (authenticated)
             {
+                user.SessionId = Guid.NewGuid().ToString();
+                connectResponseMessage.SessionId = user.SessionId;
                 server.AddClient(client);
-                server.Zaehler++;
-                connectResponseMessage.Zaehler = server.Zaehler;
                 Console.WriteLine("Client connected.");
-                
-            }
+            }            
 
-            //ConnectResponseMessage connectResponseMessage = new ConnectResponseMessage();
             connectResponseMessage.Success = authenticated;
             string json = JsonSerializer.Serialize(connectResponseMessage);
             byte[] msg = System.Text.Encoding.UTF8.GetBytes(json);

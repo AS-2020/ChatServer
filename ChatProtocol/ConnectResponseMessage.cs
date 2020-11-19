@@ -3,7 +3,8 @@
     public class ConnectResponseMessage : IMessage
     {
         public bool Success { get; set; }
-        public int Zaehler { get; set; }
+        public int Zaehler { get; set; } // löschen?
+        public string SessionId { get; set; }
 
         public int MessageId
         {

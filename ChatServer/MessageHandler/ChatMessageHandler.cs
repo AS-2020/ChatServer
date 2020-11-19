@@ -10,18 +10,21 @@ namespace ChatServer.MessageHandler
         {
             ChatMessage chatMessage = message as ChatMessage;
 
-            string json = JsonSerializer.Serialize(chatMessage);
-            byte[] msg = System.Text.Encoding.UTF8.GetBytes(json);
-            //string name = 
+            User user = server.GetUsers().Find(u => u.SessionId == chatMessage.SessionId);
 
-            foreach (TcpClient remoteClient in server.GetClients())
+            if (user != null)
             {
-                //if (remoteClient != client)
-                //{
-                //    remoteClient.GetStream().Write(
-                //}
-                remoteClient.GetStream().Write(msg, 0, msg.Length);
+                string json = JsonSerializer.Serialize(chatMessage);
+                byte[] msg = System.Text.Encoding.UTF8.GetBytes(json);
+
+                foreach (TcpClient remoteClient in server.GetClients())
+                {
+
+                    remoteClient.GetStream().Write(msg, 0, msg.Length);
+                }
+
             }
+
         }
     }
 }
