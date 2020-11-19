@@ -83,5 +83,13 @@ namespace ChatServer
         {
             return users;
         }
+        public void RemoveClient(TcpClient client)
+        {
+            clients.Remove(client);
+        }
+        public void RemoveUsers(User user, string sessionId)
+        {
+            user.SessionIds.Remove(sessionId);
+        }
     }
 }
