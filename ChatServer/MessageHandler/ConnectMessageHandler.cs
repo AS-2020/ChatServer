@@ -32,27 +32,30 @@ namespace ChatServer.MessageHandler
                 server.AddClient(client);
                 Console.WriteLine("Client connected.");
 
-                // Send user count to all clients (broadcast)
-                UserCountMessage userCountMessage = new UserCountMessage
+                if (user.SessionIds.Count == 1)
                 {
-                    UserCount = server.GetUsers().Count,
-                    UserOnlineCount = server.GetUsers().Count(u => u.SessionIds.Count > 0)
-                };
+                    // Send user count to all clients (broadcast)
+                    UserCountMessage userCountMessage = new UserCountMessage
+                    {
+                        UserCount = server.GetUsers().Count,
+                        UserOnlineCount = server.GetUsers().Count(u => u.SessionIds.Count > 0)
+                    };
 
-                string userCountMessageJson = JsonSerializer.Serialize(userCountMessage);
-                byte[] userCountMessageBytes = System.Text.Encoding.UTF8.GetBytes(userCountMessageJson);
+                    string userCountMessageJson = JsonSerializer.Serialize(userCountMessage);
+                    byte[] userCountMessageBytes = System.Text.Encoding.UTF8.GetBytes(userCountMessageJson);
 
-                foreach (TcpClient remoteClient in server.GetClients())
-                {
-                    remoteClient.GetStream().Write(userCountMessageBytes, 0, userCountMessageBytes.Length);
+                    foreach (TcpClient remoteClient in server.GetClients())
+                    {
+                        remoteClient.GetStream().Write(userCountMessageBytes, 0, userCountMessageBytes.Length);
+                    }
                 }
-            }            
+            }
 
             connectResponseMessage.Success = authenticated;
             string json = JsonSerializer.Serialize(connectResponseMessage);
             byte[] msg = System.Text.Encoding.UTF8.GetBytes(json);
             client.GetStream().Write(msg, 0, msg.Length);
-            
+
         }
     }
 }

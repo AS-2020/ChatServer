@@ -13,7 +13,7 @@ namespace ChatServer.MessageHandler
         {
             DisconnectMessage disconnectMessage = message as DisconnectMessage;
 
-            User user = server.GetUsers().Find(u => u.Username == disconnectMessage.Username);
+            User user = server.GetUsers().Find(u => u.SessionIds.Contains(disconnectMessage.SessionId));
 
             if (user != null)
             {
