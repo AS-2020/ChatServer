@@ -19,6 +19,8 @@ namespace ChatServer
 
         private List<User> users = new List<User>();
 
+        public const string USERS_PATH = "users.json";
+
         public Server(int port, string ipAddress)
         {
             this.port = port;
@@ -31,7 +33,7 @@ namespace ChatServer
             IPAddress localAddress = IPAddress.Parse(ipAddress);
             tcpListener = new TcpListener(localAddress, port);
             tcpListener.Start();
-            string userJson = File.ReadAllText("users.json");
+            string userJson = File.ReadAllText(USERS_PATH);
             users = JsonSerializer.Deserialize<List<User>>(userJson);
         }
 

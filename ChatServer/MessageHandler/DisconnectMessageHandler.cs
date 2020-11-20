@@ -15,8 +15,12 @@ namespace ChatServer.MessageHandler
 
             User user = server.GetUsers().Find(u => u.Username == disconnectMessage.Username);
 
-            server.RemoveClient(client);
-            server.RemoveUsers(user , disconnectMessage.SessionId);
+            if (user != null)
+            {
+                server.RemoveClient(client);
+                server.RemoveUsers(user, disconnectMessage.SessionId);
+
+            }
 
             DisconnectResponseMessage disconnectResponseMessage = new DisconnectResponseMessage
             {

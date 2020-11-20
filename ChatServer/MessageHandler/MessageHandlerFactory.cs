@@ -12,10 +12,10 @@
                     return new ConnectMessageHandler();
                 case 3:
                     return new DisconnectMessageHandler();
-                case 5:
-                    return new NotificationMessageHandler();
                 case 6:
                     return new DisconnectMessageHandler();
+                case 7:
+                    return new RegisterMessageHandler();
             }
 
             return null;
