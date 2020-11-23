@@ -4,7 +4,17 @@ using System.Text;
 
 namespace ChatProtocol
 {
-    class UserListRequestMessage
+    public class UserListRequestMessage : IMessage
     {
+        public string SessionId { get; set; }
+
+        public int MessageId
+        {
+            get
+            {
+                return 9;
+            }
+            set { }
+        }
     }
 }

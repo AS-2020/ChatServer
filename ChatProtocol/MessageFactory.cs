@@ -24,6 +24,10 @@ namespace ChatProtocol
                     return JsonSerializer.Deserialize<RegisterMessage>(json);
                 case 8:
                     return JsonSerializer.Deserialize<RegisterResponseMessage>(json);
+                case 9:
+                    return JsonSerializer.Deserialize<UserListRequestMessage>(json);
+                case 10:
+                    return JsonSerializer.Deserialize<UserListResponseMessage>(json);
             }
 
             return null;
