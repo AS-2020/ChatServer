@@ -21,8 +21,10 @@ namespace ChatServer.MessageHandler
 
                 foreach (TcpClient remoteClient in server.GetClients())
                 {
-
+                    if (remoteClient != client)
+                    {
                     remoteClient.GetStream().Write(msg, 0, msg.Length);
+                    }
                 }
 
             }

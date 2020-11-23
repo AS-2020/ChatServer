@@ -64,8 +64,25 @@ namespace ChatServer.MessageHandler
                     string userCountMessageJson = JsonSerializer.Serialize(userCountMessage);
                     byte[] userCountMessageBytes = System.Text.Encoding.UTF8.GetBytes(userCountMessageJson);
 
+                    UserListRequestMessage userListRequestMessage = message as UserListRequestMessage;
+
+                    var query = from u in server.GetUsers() select new { u.Id, u.Username };
+                    var userList = query.ToList();
+                    string userListJson = JsonSerializer.Serialize(userList);
+                    UserListResponseMessage userListResponseMessage = new UserListResponseMessage
+                    {
+                        UserListJson = userListJson
+                    };
+
+                    string messageJson = JsonSerializer.Serialize(userListResponseMessage);
+                    byte[] byteMessage = Encoding.UTF8.GetBytes(messageJson);
+
                     foreach (TcpClient remoteClient in server.GetClients())
                     {
+                        if (remoteClient != client)
+                        {
+                            remoteClient.GetStream().Write(byteMessage, 0, byteMessage.Length);
+                        }
                         remoteClient.GetStream().Write(userCountMessageBytes, 0, userCountMessageBytes.Length);
                     }
 
@@ -78,6 +95,8 @@ namespace ChatServer.MessageHandler
 
 
             client.GetStream().Write(msg, 0, msg.Length);
+
+
 
         }
 

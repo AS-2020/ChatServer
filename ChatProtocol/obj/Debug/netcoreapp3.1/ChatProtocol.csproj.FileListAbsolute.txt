@@ -6,3 +6,4 @@ C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\C
 C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.csproj.CoreCompileInputs.cache
 C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.dll
 C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.pdb
+C:\Daten\Umschulung_Fachinformatiker\Vertiefung_AE\Klytta\4_5_Woche\ChatServer\ChatProtocol\obj\Debug\netcoreapp3.1\ChatProtocol.csprojAssemblyReference.cache
