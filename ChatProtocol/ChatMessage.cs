@@ -5,6 +5,7 @@
         public string Content { get; set; }
         public string SessionId { get; set; }
         public int UserId { get; set; }
+        public int PrivateId { get; set; }
 
         public int MessageId
         {

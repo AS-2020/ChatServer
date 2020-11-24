@@ -18,7 +18,7 @@ namespace ChatServer.MessageHandler
             if (user != null)
             {
                 server.RemoveClient(client);
-                server.RemoveUsers(user, disconnectMessage.SessionId);
+                server.RemoveUsers(user, disconnectMessage.SessionId, client);
 
             }
 

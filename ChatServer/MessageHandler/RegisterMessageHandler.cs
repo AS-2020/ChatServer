@@ -48,10 +48,13 @@ namespace ChatServer.MessageHandler
                         Id = server.GetNextUserId(),
                         Username = registerMessage.Username.Trim(),
                         Password = registerMessage.Password,
-                        SessionIds = new List<string>()
+                        SessionIds = new List<string>(),
+                        tcpClients = new List<TcpClient>()
                     };
 
                     server.AddUser(user);
+
+                    user.tcpClients.Add(client);
 
                     server.SaveUsers();
 

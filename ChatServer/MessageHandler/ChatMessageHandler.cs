@@ -1,4 +1,5 @@
 ﻿using ChatProtocol;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text.Json;
 
@@ -19,12 +20,28 @@ namespace ChatServer.MessageHandler
                 string json = JsonSerializer.Serialize(chatMessage);
                 byte[] msg = System.Text.Encoding.UTF8.GetBytes(json);
 
-                foreach (TcpClient remoteClient in server.GetClients())
+                if (chatMessage.PrivateId == 0)
                 {
-                    if (remoteClient != client)
+                    foreach (TcpClient remoteClient in server.GetClients())
                     {
-                    remoteClient.GetStream().Write(msg, 0, msg.Length);
+                        if (remoteClient != client)
+                        {
+                            remoteClient.GetStream().Write(msg, 0, msg.Length);
+                        }
                     }
+                }
+                else
+                {
+                    User privateUser = server.GetUsers().Find(u => u.Id == chatMessage.PrivateId);
+                    foreach (TcpClient remoteClient in privateUser.tcpClients)
+                    {
+                        remoteClient.GetStream().Write(msg, 0, msg.Length);
+                    }
+                    
+                   // TcpClient privateClient;
+                   // privateClient = server.GetUsers().Find(u => u.tcpClients.Contains(client)).tcpClients;
+                   // privateClient.GetStream().Write(msg, 0, msg.Length);
+                    // var privateclient = from u in server.GetUsers() where u.tcpClients.Contains(c => c.Equals(client)) select u.privateId;
                 }
 
             }

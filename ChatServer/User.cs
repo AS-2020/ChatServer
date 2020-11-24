@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Text;
 
 namespace ChatServer
@@ -10,5 +11,6 @@ namespace ChatServer
         public string Username { get; set; }
         public string Password { get; set; }
         public List<string> SessionIds = new List<string>();
+        public List<TcpClient> tcpClients = new List<TcpClient>();
     }
 }

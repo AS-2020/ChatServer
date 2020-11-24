@@ -91,15 +91,20 @@ namespace ChatServer
         {
             clients.Remove(client);
         }
-        public void RemoveUsers(User user, string sessionId)
+        public void RemoveUsers(User user, string sessionId, TcpClient client)
         {
             user.SessionIds.Remove(sessionId);
+            user.tcpClients.Remove(client);
         }
 
         public void SaveUsers()
         {
             string json = JsonSerializer.Serialize(GetUsers());
             File.WriteAllText(USERS_PATH, json);
+        }
+        public void GetPrivateTcpClient()
+        {
+            
         }
     }
 }

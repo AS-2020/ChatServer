@@ -28,7 +28,7 @@ namespace ChatServer.MessageHandler
             {
                 string sessionId = Guid.NewGuid().ToString();
                 user.SessionIds.Add(sessionId);
-                //user.tcpClients.Add(client);
+                user.tcpClients.Add(client);
                 connectResponseMessage.SessionId = sessionId;
                 server.AddClient(client);
                 Console.WriteLine("Client connected.");
