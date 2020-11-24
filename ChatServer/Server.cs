@@ -21,11 +21,13 @@ namespace ChatServer
 
         public const string USERS_PATH = "users.json";
 
+        public int UsernameMinLength = 3;
+        public int PasswordMinLength = 3;
+
         public Server(int port, string ipAddress)
         {
             this.port = port;
             this.ipAddress = ipAddress;
-            //Zaehler = -1;
         }
 
         public void Start()
@@ -76,7 +78,7 @@ namespace ChatServer
             return tcpListener.AcceptTcpClient();
         }
 
-        public void AddUsers(User user)
+        public void AddUser(User user)
         {
             users.Add(user);
         }
@@ -92,6 +94,12 @@ namespace ChatServer
         public void RemoveUsers(User user, string sessionId)
         {
             user.SessionIds.Remove(sessionId);
+        }
+
+        public void SaveUsers()
+        {
+            string json = JsonSerializer.Serialize(GetUsers());
+            File.WriteAllText(USERS_PATH, json);
         }
     }
 }

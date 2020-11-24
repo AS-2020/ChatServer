@@ -1,4 +1,5 @@
 ﻿using ChatProtocol;
+using ChatServer.Extension;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,15 +12,21 @@ namespace ChatServer.MessageHandler
 {
     public class RegisterMessageHandler : IMessageHandler
     {
+
+        private string errorMessage;
         public void Execute(Server server, TcpClient client, IMessage message)
         {
             RegisterMessage registerMessage = message as RegisterMessage;
 
             User test = server.GetUsers().Find(u => u.Username == registerMessage.Username);
 
-            RegisterResponseMessage registerResponseMessage = new RegisterResponseMessage();
+            RegisterResponseMessage registerResponseMessage = new RegisterResponseMessage
+            {
+                Success = false
+            };
 
             bool authenticatedServerPassword = true;
+
             if (server.HasPassword())
             {
                 authenticatedServerPassword = server.CheckPassword(registerMessage.ServerPassword);
@@ -28,25 +35,25 @@ namespace ChatServer.MessageHandler
             if (authenticatedServerPassword)
             {
 
-                if (test != null)
+                if (!IsValid(server, registerMessage.Username, registerMessage.Password))
                 {
-                    registerResponseMessage.Content = "Username already exists!";
+                    registerResponseMessage.Content = errorMessage;
                 }
                 else
                 {
-                    int id = server.GetUsers().OrderBy(u => u.Id).Last().Id + 1;
+                    //int id = server.GetUsers().OrderBy(u => u.Id).Last().Id + 1;
 
                     User user = new User
                     {
-                        Id = id,
-                        Username = registerMessage.Username,
-                        Password = registerMessage.Password
+                        Id = server.GetNextUserId(),
+                        Username = registerMessage.Username.Trim(),
+                        Password = registerMessage.Password,
+                        SessionIds = new List<string>()
                     };
 
-                    server.AddUsers(user);
+                    server.AddUser(user);
 
-                    string json = JsonSerializer.Serialize(server.GetUsers());
-                    File.WriteAllText(Server.USERS_PATH, json);
+                    server.SaveUsers();
 
                     registerResponseMessage.Content = "New User created";
 
@@ -88,17 +95,41 @@ namespace ChatServer.MessageHandler
 
                 }
             }
-            bool authenticated = test == null && authenticatedServerPassword;
+            bool authenticated = IsValid(server, registerMessage.Username, registerMessage.Password) && authenticatedServerPassword;
             registerResponseMessage.Success = authenticated;
             string json_response = JsonSerializer.Serialize(registerResponseMessage);
             byte[] msg = System.Text.Encoding.UTF8.GetBytes(json_response);
 
-
             client.GetStream().Write(msg, 0, msg.Length);
-
-
-
         }
 
+        private bool IsValid(Server server, string username, string password)
+        {
+            var stringBuilder = new StringBuilder();
+
+            if (!username.IsOneWord())
+            {
+                stringBuilder.AppendLine("Username must have one word.");
+            }
+
+            if (password.Length < server.PasswordMinLength)
+            {
+                stringBuilder.AppendLine($"Password length must be at least {server.PasswordMinLength}.");
+            }
+
+            if (username.Length < server.UsernameMinLength)
+            {
+                stringBuilder.AppendLine($"Username length must be at least {server.UsernameMinLength}.");
+            }
+
+            if (server.GetUsers().Exists(u => u.Username == username))
+            {
+                stringBuilder.AppendLine("Username already exists.");
+            }
+
+            errorMessage = stringBuilder.ToString();
+
+            return errorMessage.Length == 0;
+        }
     }
 }
