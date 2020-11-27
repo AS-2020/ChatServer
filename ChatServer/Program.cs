@@ -2,6 +2,7 @@
 using ChatServer.Extension;
 using ChatServer.MessageHandler;
 using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text.Json;
 using System.Threading;
@@ -26,7 +27,7 @@ namespace ChatServer
                     data = System.Text.Encoding.UTF8.GetString(bytes, 0, i);
 
                     GenericMessage genericMessage = JsonSerializer.Deserialize<GenericMessage>(data);
-
+                                        
                     IMessage message = MessageFactory.GetMessage(genericMessage.MessageId, data);
 
                     IMessageHandler handler = MessageHandlerFactory.GetMessageHandler(genericMessage.MessageId);

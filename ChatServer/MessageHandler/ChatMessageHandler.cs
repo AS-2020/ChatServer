@@ -24,10 +24,10 @@ namespace ChatServer.MessageHandler
                 {
                     foreach (TcpClient remoteClient in server.GetClients())
                     {
-                        if (remoteClient != client)
-                        {
-                            remoteClient.GetStream().Write(msg, 0, msg.Length);
-                        }
+                        //if (remoteClient != client)
+
+                        remoteClient.GetStream().Write(msg, 0, msg.Length);
+
                     }
                 }
                 else
@@ -37,10 +37,10 @@ namespace ChatServer.MessageHandler
                     {
                         remoteClient.GetStream().Write(msg, 0, msg.Length);
                     }
-                    
-                   // TcpClient privateClient;
-                   // privateClient = server.GetUsers().Find(u => u.tcpClients.Contains(client)).tcpClients;
-                   // privateClient.GetStream().Write(msg, 0, msg.Length);
+
+                    // TcpClient privateClient;
+                    // privateClient = server.GetUsers().Find(u => u.tcpClients.Contains(client)).tcpClients;
+                    // privateClient.GetStream().Write(msg, 0, msg.Length);
                     // var privateclient = from u in server.GetUsers() where u.tcpClients.Contains(c => c.Equals(client)) select u.privateId;
                 }
 
